@@ -1,8 +1,7 @@
 import MyAlert from "./my-alert"
-import fantasyJson from "../data/fantasy.json"
 import { Component } from "react"
-import MyCard from "./my-card"
-import { Col, Container, Row } from "react-bootstrap"
+import AllTheBooks from "./all-the-books"
+
 
 
 
@@ -13,17 +12,8 @@ class Welcome extends Component{
         return(
             <div>
             <MyAlert/>
-            <Container>
-                <Row>
-
-           { fantasyJson.map((book,i)=>{
-            return (
-            <Col xs={12} md={4} lg={3} key={i}  className="text-center d-flex p-2 ">
-            <MyCard key={book.asin} book={book}/>
-            </Col>)
-           })}
-                </Row>
-            </Container>
+            <AllTheBooks/>
+            
         </div>
         )
     }
