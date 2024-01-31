@@ -4,6 +4,7 @@ import { currencyEuro } from "../helpers/currency";
 import { CiShoppingCart } from "react-icons/ci";
 
 function MyCard(props) {
+  console.log(props);
   let book = props.book;
   return (
     <Card className="flex-fill">
@@ -13,7 +14,7 @@ function MyCard(props) {
         <Card.Text>{book.category.toUpperCase()}</Card.Text>
         <Card.Text>
           <strong>{currencyEuro(book.price.toString())}</strong>
-          <CiShoppingCart size={30} className="ms-5"/>
+          <CiShoppingCart size={30} className="ms-5" />
         </Card.Text>
       </Card.Body>
     </Card>
