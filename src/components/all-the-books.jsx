@@ -20,67 +20,73 @@ class AllTheBooks extends Component {
   render() {
     return (
       <Container>
-        {/* DROPDOWNS */}
-        <NavDropdown
-          title={this.state.category.toUpperCase()}
-          id="basic-nav-dropdown">
-          <NavDropdown.Item
-            onClick={() =>
-              this.setState({
-                books: fantasy,
-                category: "fantasy",
-              })
-            }>
-            Fantasy
-          </NavDropdown.Item>
-          <NavDropdown.Item
-            onClick={() =>
-              this.setState({
-                books: horror,
-                category: "horror",
-              })
-            }>
-            Horror
-          </NavDropdown.Item>
-          <NavDropdown.Item
-            onClick={() =>
-              this.setState({
-                books: scifi,
-                category: "scifi",
-              })
-            }>
-            SciFi
-          </NavDropdown.Item>
-          <NavDropdown.Item
-            onClick={() =>
-              this.setState({
-                books: history,
-                category: "history",
-              })
-            }>
-            History
-          </NavDropdown.Item>
-          <NavDropdown.Item
-            onClick={() =>
-              this.setState({
-                books: romance,
-                category: "romance",
-              })
-            }>
-            Romance
-          </NavDropdown.Item>
-        </NavDropdown>
-        <Form className="">
-          <Form.Control
-            type="text"
-            placeholder="Cerca"
-            value={this.state.searchText}
-            onChange={(e) => {
-              this.setState({
-                searchText: e.target.value,
-              });
-            }}></Form.Control>
-        </Form>
+        <Row className="justify-content-center align-items-center ">
+          <Col md={2} className="text-center">
+            {/* DROPDOWNS */}
+            <NavDropdown
+              title={this.state.category.toUpperCase()}
+              id="basic-nav-dropdown">
+              <NavDropdown.Item
+                onClick={() =>
+                  this.setState({
+                    books: fantasy,
+                    category: "fantasy",
+                  })
+                }>
+                Fantasy
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() =>
+                  this.setState({
+                    books: horror,
+                    category: "horror",
+                  })
+                }>
+                Horror
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() =>
+                  this.setState({
+                    books: scifi,
+                    category: "scifi",
+                  })
+                }>
+                SciFi
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() =>
+                  this.setState({
+                    books: history,
+                    category: "history",
+                  })
+                }>
+                History
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() =>
+                  this.setState({
+                    books: romance,
+                    category: "romance",
+                  })
+                }>
+                Romance
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Col>
+          <Col>
+            <Form className="mt-sm-3 mt-lg-0 ">
+              <Form.Control
+                type="text"
+                placeholder="Cerca"
+                value={this.state.searchText}
+                onChange={(e) => {
+                  this.setState({
+                    searchText: e.target.value,
+                  });
+                }}></Form.Control>
+            </Form>
+          </Col>
+        </Row>
 
         {/* LIST CARDS */}
         <Row>
