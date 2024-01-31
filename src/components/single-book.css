@@ -1,0 +1,7 @@
+.img-fit {
+  object-fit: contain;
+}
+
+.selected {
+  background-color: yellow !important;
+}

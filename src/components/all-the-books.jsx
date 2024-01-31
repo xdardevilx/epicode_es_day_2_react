@@ -6,26 +6,29 @@ import horror from "../data/horror.json";
 import romance from "../data/romance.json";
 import scifi from "../data/scifi.json";
 
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { NavDropdown } from "react-bootstrap";
-import MyCard from "./my-card";
-
+import SingleBook from "./single-book";
 
 class AllTheBooks extends Component {
-
   state = {
     books: fantasy,
+    searchText: "",
+    category: "fantasy",
   };
 
   render() {
     return (
       <Container>
         {/* DROPDOWNS */}
-        <NavDropdown title={this.state.books[0].category.toUpperCase()} id="basic-nav-dropdown">
+        <NavDropdown
+          title={this.state.category.toUpperCase()}
+          id="basic-nav-dropdown">
           <NavDropdown.Item
             onClick={() =>
               this.setState({
                 books: fantasy,
+                category: "fantasy",
               })
             }>
             Fantasy
@@ -34,6 +37,7 @@ class AllTheBooks extends Component {
             onClick={() =>
               this.setState({
                 books: horror,
+                category: "horror",
               })
             }>
             Horror
@@ -42,6 +46,7 @@ class AllTheBooks extends Component {
             onClick={() =>
               this.setState({
                 books: scifi,
+                category: "scifi",
               })
             }>
             SciFi
@@ -50,6 +55,7 @@ class AllTheBooks extends Component {
             onClick={() =>
               this.setState({
                 books: history,
+                category: "history",
               })
             }>
             History
@@ -58,26 +64,45 @@ class AllTheBooks extends Component {
             onClick={() =>
               this.setState({
                 books: romance,
+                category: "romance",
               })
             }>
             Romance
           </NavDropdown.Item>
         </NavDropdown>
+        <Form className="">
+          <Form.Control
+            type="text"
+            placeholder="Cerca"
+            value={this.state.searchText}
+            onChange={(e) => {
+              this.setState({
+                searchText: e.target.value,
+              });
+            }}></Form.Control>
+        </Form>
 
         {/* LIST CARDS */}
         <Row>
-          {this.state.books.map((book, i) => {
-            return (
-              <Col
-                xs={12}
-                md={4}
-                lg={3}
-                key={i}
-                className="text-center d-flex p-2 ">
-                <MyCard key={book.asin} book={book} />
-              </Col>
-            );
-          })}
+          {this.state.books
+            .filter((book) =>
+              book.title
+                .toLowerCase()
+                .includes(this.state.searchText.toLowerCase())
+            )
+
+            .map((book, i) => {
+              return (
+                <Col
+                  xs={12}
+                  md={4}
+                  lg={3}
+                  key={i}
+                  className="text-center d-flex p-2 ">
+                  <SingleBook key={book.asin} book={book} />
+                </Col>
+              );
+            })}
         </Row>
       </Container>
     );
