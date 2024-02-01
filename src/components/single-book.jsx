@@ -21,7 +21,7 @@ class SingleBook extends Component {
 
   render() {
     return (
-      <div>
+      <div className="d-flex flex-column ">
         <Card className={this.state.cardClass}>
           <Card.Img
             onClick={() => this.clickSelected()}

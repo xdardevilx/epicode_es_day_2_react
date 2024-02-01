@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 
 class CommentArea extends Component{
     render(){
-        const {classe} = this.props;
         return(
             <>
             <FloatingLabel
