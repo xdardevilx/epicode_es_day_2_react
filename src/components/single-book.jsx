@@ -21,7 +21,7 @@ class SingleBook extends Component {
 
   render() {
     return (
-      <div className="d-flex flex-column ">
+      <>
         <Card className={this.state.cardClass}>
           <Card.Img
             onClick={() => this.clickSelected()}
@@ -39,9 +39,9 @@ class SingleBook extends Component {
               <CiShoppingCart size={30} className="ms-5" />
             </Card.Text>
           </Card.Body>
+          {this.state.selected && <CommentArea />}
         </Card>
-        {this.state.selected ? <CommentArea /> : null}
-      </div>
+      </>
     );
   }
 }
